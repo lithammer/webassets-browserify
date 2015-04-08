@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Browserify filter for webassets
---------------------
+-------------------------------
 
-Filter for for compiling assets using Browserify[1] and webassets[2].
+Filter for for compiling assets using `Browserify <http://browserify.org>`_ and
+`webassets <http://webassets.readthedocs.org>`_.
 
 Basic usage
-`````
+```````````
 
 .. code:: python
 
@@ -17,9 +18,9 @@ Basic usage
 
 
 Usage with Django
-`````
+`````````````````
 
-This requires django-assets[3].
+This requires `django-assets <http://django-assets.readthedocs.org>`_.
 
 .. code:: python
 
@@ -32,14 +33,6 @@ This requires django-assets[3].
     js = Bundle('js/main.js', filters='browserify', output='bundle.js',
                 depends='js/**/*.js')
     register('js_all', js)
-
-
-Links
-`````
-
-[1] http://browserify.org
-[2] http://webassets.readthedocs.org
-[3] http://django-assets.readthedocs.org
 
 """
 from setuptools import setup, find_packages
