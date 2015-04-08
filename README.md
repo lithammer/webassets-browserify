@@ -28,6 +28,24 @@ js = Bundle('js/main.js', filters='browserify', output='bundle.js',
 register('js_all', js)
 ```
 
+## Options
+
+###### BROWSERIFY_BIN
+
+The path to the Browserify binary. If not set, assumes `browserify` is in the system path.
+
+###### BROWSERIFY_TRANSFORMS
+
+A list of Browserify transforms to use. Each transform will be included via Browserify's command-line `--transform` argument.
+
+###### BROWSERIFY_EXTRA_ARGS
+
+A list of any additional command-line arguments. For example:
+
+```python
+BROWSERIFY_EXTRA_ARGS = ['--debug', '--ignore', '*.jsx']
+```
+
 ## License
 
 MIT
