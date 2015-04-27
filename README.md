@@ -30,15 +30,15 @@ register('js_all', js)
 
 ## Options
 
-###### BROWSERIFY_BIN
+##### BROWSERIFY_BIN
 
 The path to the Browserify binary. If not set, assumes `browserify` is in the system path.
 
-###### BROWSERIFY_TRANSFORMS
+##### BROWSERIFY_TRANSFORMS
 
 A list of Browserify transforms to use. Each transform will be included via Browserify's command-line `--transform` argument.
 
-###### BROWSERIFY_EXTRA_ARGS
+##### BROWSERIFY_EXTRA_ARGS
 
 A list of any additional command-line arguments. For example:
 
