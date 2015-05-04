@@ -39,7 +39,7 @@ from setuptools import setup, find_packages
 
 
 setup(name='webassets-browserify',
-      version='1.0.1',
+      version='1.0.2',
       description='Browserify filter for webassets',
       long_description=__doc__,
       author='Peter Renström',
