@@ -48,7 +48,7 @@ setup(name='webassets-browserify',
       packages=find_packages(),
       keywords=['browserify', 'webassets', 'django assets'],
       install_requires=['webassets'],
-      test_suite='tests',
+      test_suite='webassets_browserify.tests',
       classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Intended Audience :: Developers',
