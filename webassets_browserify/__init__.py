@@ -19,7 +19,9 @@ class Browserify(ExternalTool):
 
     BROWSERIFY_TRANSFORMS
         A list of Browserify transforms to use. Each transform will be included
-        via Browserify's command-line ``--transform`` argument.
+        via Browserify's command-line ``--transform`` argument. If you need
+        to pass arguments to a transform, use a list:
+        ``['babelify', '--stage', '0']``
 
     BROWSERIFY_EXTRA_ARGS
         A list of any additional command-line arguments.
@@ -38,7 +40,12 @@ class Browserify(ExternalTool):
         args = [self.binary or 'browserify']
 
         for transform in self.transforms or []:
-            args.extend(('--transform', transform))
+            if isinstance(transform, (list, tuple)):
+                args.extend(('--transform', '['))
+                args.extend(transform)
+                args.append(']')
+            else:
+                args.extend(('--transform', transform))
 
         if self.extra_args:
             args.extend(self.extra_args)
