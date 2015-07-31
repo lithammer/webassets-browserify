@@ -30,26 +30,30 @@ class Browserify(ExternalTool):
 
     name = 'browserify'
     max_debug_level = None
+    method = 'output'
     options = {
         'binary': 'BROWSERIFY_BIN',
         'transforms': option('BROWSERIFY_TRANSFORMS', type=list),
         'extra_args': option('BROWSERIFY_EXTRA_ARGS', type=list)
     }
 
-    def input(self, infile, outfile, **kwargs):
-        args = [self.binary or 'browserify']
+    def setup(self):
+        super(Browserify, self).setup()
+        self.argv = [self.binary or 'browserify']
 
         for transform in self.transforms or []:
             if isinstance(transform, (list, tuple)):
-                args.extend(('--transform', '['))
-                args.extend(transform)
-                args.append(']')
+                self.argv.extend(('--transform', '['))
+                self.argv.extend(transform)
+                self.argv.append(']')
             else:
-                args.extend(('--transform', transform))
+                self.argv.extend(('--transform', transform))
 
         if self.extra_args:
-            args.extend(self.extra_args)
+            self.argv.extend(self.extra_args)
 
-        args.append(kwargs['source_path'])
+    def input(self, infile, outfile, **kwargs):
+        self.argv.append(kwargs['source_path'])
 
-        self.subprocess(args, outfile, infile)
+    def output(self, infile, outfile, **kwargs):
+        self.subprocess(self.argv, outfile, infile)
